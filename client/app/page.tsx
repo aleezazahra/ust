@@ -8,4 +8,5 @@ export default function HomePage(){
       <Features />
     </main>
   )
-}
+} 
+
