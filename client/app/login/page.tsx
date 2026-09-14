@@ -1,6 +1,5 @@
 
-
-
+'use client';
 import { useRouter } from 'next/navigation';
 import GoogleContinueButton from '@/components/auth/GoogleContinueButton';
 
@@ -24,7 +23,7 @@ export default function LoginPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <GoogleContinueButton
             onClick={() => {
-              // Replace this with your Google OAuth function.
+          
               console.log('Google login');
             }}
           />
