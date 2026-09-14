@@ -1,4 +1,0 @@
-
-
-yk um use the colors as in globals.css make it premium but do not include gradients and all those slopppy elements create a headline for hero section like 
-wanna be permamnenet us citizen and it fades then next line get typed we offer personalized plan then disappears then nect line goes like we build  paersonalized app for a;lll ts  and add cards to features too dont addd emojis instead use the react icons or lucide wtvr for features dont use glasss morphism at ll uh ok myt features aint only letting u prepare for a test its all inn one for gguiduing you to gather documents to keeping track of them a personalized plan that tracks time and make plan acc to the time left and theres this ai explanation and like thge voice thing for interview both version tests balh blah for now create these two components 
