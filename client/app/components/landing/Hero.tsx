@@ -1,220 +1,112 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const rotatingLines = [
-  'We build your personalized plan.',
-  'We keep your preparation on track.',
-  'We guide you through the entire journey.',
+  'Your own personalizen plan according to timings and learning speed.',
+  'Keeps track of your documents and prepration.',
+  'All in one place to get your PR.',
+];
+
+const stars = [
+  { top: '14%', left: '10%', size: 16, opacity: 0.55 },
+  { top: '10%', left: '88%', size: 12, opacity: 0.4 },
+  { top: '30%', left: '95%', size: 18, opacity: 0.5 },
+  { top: '68%', left: '92%', size: 14, opacity: 0.45 },
+  { top: '80%', left: '18%', size: 10, opacity: 0.35 },
+  { top: '55%', left: '5%', size: 12, opacity: 0.4 },
 ];
 
 export default function Hero() {
-  const [activeLine, setActiveLine] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [lineIndex, setLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [displayText, setDisplayText] = useState('');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false);
+    const currentLine = rotatingLines[lineIndex];
+    let timeout: ReturnType<typeof setTimeout>;
 
-      setTimeout(() => {
-        setActiveLine((current) => (current + 1) % rotatingLines.length);
-        setVisible(true);
-      }, 450);
-    }, 3000);
+    if (!deleting && charIndex <= currentLine.length) {
+      timeout = setTimeout(() => {
+        setDisplayText(currentLine.slice(0, charIndex));
+        setCharIndex((c) => c + 1);
+      }, 45);
+    } else if (!deleting && charIndex > currentLine.length) {
+      timeout = setTimeout(() => setDeleting(true), 1600);
+    } else if (deleting && charIndex >= 0) {
+      timeout = setTimeout(() => {
+        setDisplayText(currentLine.slice(0, charIndex));
+        setCharIndex((c) => c - 1);
+      }, 25);
+    } else {
+      setDeleting(false);
+      setCharIndex(0);
+      setLineIndex((i) => (i + 1) % rotatingLines.length);
+    }
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, lineIndex]);
 
   return (
-    <section className="relative overflow-hidden bg-[var(--color-warm-white)]">
-      <div className="mx-auto flex min-h-[calc(100vh-72px)] max-w-7xl items-center px-6 py-20 sm:px-8 lg:px-12">
-        <div className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
-          {/* Left */}
-          <div className="max-w-3xl">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-600 shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-[var(--color-blue)]" />
-              Citizenship preparation, built around you
-            </div>
+    <section className="relative overflow-hidden bg-[var(--color-blue)]">
+      <div className="absolute inset-0 [clip-path:polygon(66%_0,100%_0,100%_48%)] bg-[var(--color-navy)]" />
+      <div className="absolute inset-0 [clip-path:polygon(100%_56%,100%_100%,58%_100%)] bg-[var(--color-navy)]" />
+      <div className="absolute inset-0 [clip-path:polygon(38%_0,100%_18%,88%_100%,26%_100%)] bg-[var(--color-warm-white)]/10" />
 
-            <h1 className="text-5xl font-semibold leading-[1.05] tracking-[-0.035em] text-[var(--color-navy)] sm:text-6xl lg:text-7xl">
-              Want to become a
-              <span className="block">permanent U.S. citizen?</span>
-            </h1>
+      {stars.map((star, i) => (
+        <Star
+          key={i}
+          size={star.size}
+          fill="currentColor"
+          className="absolute text-[var(--color-warm-white)]"
+          style={{ top: star.top, left: star.left, opacity: star.opacity }}
+        />
+      ))}
 
-            <div className="mt-7 min-h-[92px] sm:min-h-[105px]">
-              <p
-                className={`max-w-2xl text-2xl font-medium leading-tight tracking-[-0.02em] text-[var(--color-blue)] transition-all duration-500 sm:text-3xl ${
-                  visible
-                    ? 'translate-y-0 opacity-100'
-                    : '-translate-y-2 opacity-0'
-                }`}
-              >
-                {rotatingLines[activeLine]}
-              </p>
-            </div>
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-72px)] max-w-5xl flex-col items-center justify-center px-6 py-20 text-center sm:px-8 lg:px-12">
 
-            <p className="mt-4 max-w-xl text-lg leading-8 text-slate-600">
-              From understanding your test to organizing documents, planning
-              your study time, practicing questions, and preparing for your
-              interview — everything stays in one place.
-            </p>
+        <h1 className="text-5xl font-semibold leading-[1.05] tracking-[-0.035em] text-[var(--color-warm-white)] sm:text-6xl lg:text-7xl">
+          Want to become a
+          <span className="block">permanent U.S. citizen?</span>
+        </h1>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/onboarding"
-                className="btn btn-primary group min-h-12 px-6"
-              >
-                Build my study plan
-                <ArrowRight
-                  size={18}
-                  className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
-                />
-              </Link>
-
-              <Link
-                href="#features"
-                className="btn btn-secondary min-h-12 px-6"
-              >
-                See how it works
-              </Link>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-500">
-              <span className="flex items-center gap-2">
-                <Check size={16} className="text-[var(--color-blue)]" />
-                Personalized preparation
-              </span>
-
-              <span className="flex items-center gap-2">
-                <Check size={16} className="text-[var(--color-blue)]" />
-                Built around your schedule
-              </span>
-
-              <span className="flex items-center gap-2">
-                <Check size={16} className="text-[var(--color-blue)]" />
-                Progress tracking
-              </span>
-            </div>
-          </div>
-
-          {/* Right visual */}
-          <div className="relative mx-auto w-full max-w-lg">
-            <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_24px_70px_rgba(11,31,58,0.10)] sm:p-6">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-5">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.14em] text-slate-400">
-                    Your preparation
-                  </p>
-                  <h2 className="mt-1 text-xl font-semibold text-[var(--color-navy)]">
-                    Today&apos;s plan
-                  </h2>
-                </div>
-
-                <div className="rounded-lg bg-[var(--color-warm-white)] px-3 py-2 text-right">
-                  <p className="text-xs text-slate-400">Daily goal</p>
-                  <p className="text-sm font-semibold text-[var(--color-navy)]">
-                    30 min
-                  </p>
-                </div>
-              </div>
-
-              <div className="py-5">
-                <div className="mb-5 flex items-end justify-between">
-                  <div>
-                    <p className="text-sm text-slate-500">
-                      Preparation progress
-                    </p>
-                    <p className="mt-1 text-3xl font-semibold tracking-tight text-[var(--color-navy)]">
-                      68%
-                    </p>
-                  </div>
-
-                  <p className="text-sm font-medium text-[var(--color-blue)]">
-                    On track
-                  </p>
-                </div>
-
-                <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-                  <div
-                    className="h-full rounded-full bg-[var(--color-blue)]"
-                    style={{ width: '68%' }}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center justify-between rounded-xl border border-slate-200 p-4">
-                  <div>
-                    <p className="font-medium text-[var(--color-navy)]">
-                      Civics practice
-                    </p>
-                    <p className="mt-1 text-sm text-slate-400">
-                      10 questions
-                    </p>
-                  </div>
-
-                  <span className="text-sm font-medium text-[var(--color-blue)]">
-                    10 min
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between rounded-xl border border-slate-200 p-4">
-                  <div>
-                    <p className="font-medium text-[var(--color-navy)]">
-                      Review weak areas
-                    </p>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Personalized review
-                    </p>
-                  </div>
-
-                  <span className="text-sm font-medium text-[var(--color-blue)]">
-                    10 min
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between rounded-xl border border-slate-200 p-4">
-                  <div>
-                    <p className="font-medium text-[var(--color-navy)]">
-                      Interview practice
-                    </p>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Speaking session
-                    </p>
-                  </div>
-
-                  <span className="text-sm font-medium text-[var(--color-blue)]">
-                    10 min
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-5 border-t border-slate-100 pt-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-slate-400">
-                      Interview
-                    </p>
-                    <p className="mt-1 font-semibold text-[var(--color-navy)]">
-                      42 days remaining
-                    </p>
-                  </div>
-
-                  <div className="h-10 w-10 rounded-full border-4 border-slate-100 border-t-[var(--color-blue)]" />
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-lg sm:block">
-              <p className="text-xs text-slate-400">This week</p>
-              <p className="mt-1 font-semibold text-[var(--color-navy)]">
-                4 study sessions
-              </p>
-            </div>
-          </div>
+        <div className="mt-8 min-h-[64px] sm:min-h-[76px]">
+          <p className="max-w-2xl text-2xl font-medium leading-tight tracking-[-0.02em] text-slate-300 sm:text-3xl">
+            {displayText}
+            <span className="ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[2px] bg-slate-300 align-middle animate-pulse" />
+          </p>
         </div>
+
+        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+          <Link
+            href="/onboarding"
+            className="group relative inline-flex min-h-12 items-center gap-2 overflow-hidden rounded-full border border-[var(--color-warm-white)]/50 px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-warm-white)] transition-colors duration-300"
+          >
+            <span className="absolute inset-x-0 bottom-0 h-0 bg-[var(--color-warm-white)] transition-all duration-300 ease-out group-hover:h-full" />
+            <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-[var(--color-navy)]">
+              Build my study plan
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </span>
+          </Link>
+
+          <Link
+            href="#features"
+            className="group relative inline-flex min-h-12 items-center gap-2 overflow-hidden rounded-full border border-[var(--color-warm-white)]/50 px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-warm-white)] transition-colors duration-300"
+          >
+            <span className="absolute inset-x-0 bottom-0 h-0 bg-[var(--color-warm-white)] transition-all duration-300 ease-out group-hover:h-full" />
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--color-navy)]">
+              See how it works
+            </span>
+          </Link>
+        </div>
+
+       
       </div>
     </section>
   );
