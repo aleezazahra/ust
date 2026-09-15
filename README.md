@@ -19,3 +19,7 @@ Maybe will spend these two three weeks working on its frontend and will start ba
 ------------    Thanks for reading allat :) ----------
 
 in this week we will focus on builduing the onboarding , landing page and some other components hopefully 
+
+
+todays task: Create a Dashboard
+second person task: create a streak backend + frontend
