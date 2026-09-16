@@ -17,3 +17,9 @@ Maybe will spend these two three weeks working on its frontend and will start ba
 
 
 ------------    Thanks for reading allat :) ----------
+So I dont know if yall know about hack club , well they are a non-profit organization based in USA and their new program has been started recently where they are giving free prizes like macbook , iphones and laptops for freee for just coding
+anyone aged 13-18 can join
+https://stardance.space/r-abj2b
+
+
+
