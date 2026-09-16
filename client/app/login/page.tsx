@@ -23,8 +23,7 @@ export default function LoginPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <GoogleContinueButton
             onClick={() => {
-          
-              console.log('Google login');
+              router.push('/dashboard');
             }}
           />
 

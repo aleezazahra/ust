@@ -7,15 +7,15 @@ import {
     BookOpen,
     Layers,
     ClipboardCheck,
-    TrendingCheck,
+    TrendingUp,
     Settings,
     HelpCircle,
 } from 'lucide-react';
 
 
 const navItems=[
-    {label:"Dasboard", href:'/dashboard',icon:LayoutDashboard},
-    {label:'Lessons',href:'/dashbord/lessons',icon:BookOpen},
+    {label:"Dashboard", href:'/dashboard',icon:LayoutDashboard},
+    {label:'Lessons',href:'/dashboard/lessons',icon:BookOpen},
     {label:"Flashcards",href:"/dashboard/flashcards",icon:Layers},
     {label:"Practice Test",href:"/dashboard/practice-test",icon:ClipboardCheck},
     {label:"My Progress",href:"/dashboard/progress",icon:TrendingUp},
@@ -25,6 +25,9 @@ const navItems=[
 ]
 
 export default function Sidebar(){
+    const pathname = usePathname();
+
+    return (
     <aside className="flex h-screen w-64 flex-col border-r border-slate-200 bg-white ">
         <div className="flex h-10 items-center border-b border-slate-200 px-6">
 
@@ -36,11 +39,11 @@ export default function Sidebar(){
         <nav className="flex flex-1 flex-col gap-1 px-3 py-6">
             {navItems.map((item)=>{
                 const Icon=item.icon;
-                const active:pathname==item.href;
+                const active = pathname === item.href;
 
                 return(
-                    <Link key={item.href} href={item.href} className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transistion-colors ${
-                        active?'bg-[var(--color-warm-white)] text-[var(--color-navy)] ': 'text-slate-500 hover:bg-[var(--color-warm-white)] hover;text-[var(--color-navy)]'
+                    <Link key={item.href} href={item.href} className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                        active?'bg-[var(--color-warm-white)] text-[var(--color-navy)] ': 'text-slate-500 hover:bg-[var(--color-warm-white)] hover:text-[var(--color-navy)]'
 
 
                     }`}>
@@ -56,6 +59,7 @@ export default function Sidebar(){
 
         </nav>
     </aside>
+    );
 
 
 
