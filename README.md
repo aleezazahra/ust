@@ -20,5 +20,17 @@ Maybe will spend these two three weeks working on its frontend and will start ba
 
 Features in first week :
 1.Landing page (not copmpleted yet)
+2.Onboarding (not completed yet gonna add more customization in future)
+3.Dashboard UI
+4. profile page UI
+5. added sources to the questions
+
+### AI USAGE :
+used ai in debugging (codex) to fix some bugs that saved me hours
+
+
+
+will start working on backend from weerk 2 hopefully :3  
+
 
 

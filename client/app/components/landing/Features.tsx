@@ -9,6 +9,9 @@ import {
     Target,
 } from 'lucide-react';
 import Link from 'next/link';
+import { Baloo_2 } from 'next/font/google';
+
+const baloo = Baloo_2({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
 const features = [
     {
@@ -59,7 +62,7 @@ export default function Features() {
     return (
         <section
             id="features"
-            className='bg-white px-6 py-24 sm:px-8 lg:px-12'>
+            className={`${baloo.className} bg-white px-6 py-24 sm:px-8 lg:px-12`}>
             <div className='mx-auto max-w-7xl'>
                 <div className='max-w-2xl'>
         
