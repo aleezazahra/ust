@@ -18,5 +18,7 @@ Maybe will spend these two three weeks working on its frontend and will start ba
 
 ------------    Thanks for reading allat :) ----------
 
+Features in first week :
+1.Landing page (not copmpleted yet)
 
 

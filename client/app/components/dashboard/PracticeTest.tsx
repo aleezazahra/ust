@@ -1,6 +1,7 @@
 'use client';
 
-import { Clock, HelpCircle } from 'lucide-react';
+import { Clock, HelpCircle, CheckCircle2, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
 import Sidebar from './Sidebar';
 
 const pastAttempts = [
@@ -10,6 +11,9 @@ const pastAttempts = [
 ];
 
 export default function PracticeTest() {
+  const [started, setStarted] = useState(false);
+  const [answer, setAnswer] = useState<string | null>(null);
+  const options = ['The Constitution', 'The Declaration of Independence', 'The Bill of Rights', 'The Federalist Papers'];
   return (
     <div className="flex min-h-screen bg-[var(--color-warm-white)]">
       <Sidebar />
@@ -40,12 +44,20 @@ export default function PracticeTest() {
             </span>
           </div>
 
-          <button
+          {!started ? <button
             type="button"
+            onClick={() => setStarted(true)}
             className="mt-7 rounded-full bg-[var(--color-navy)] px-6 py-3 text-xs font-medium uppercase tracking-[0.15em] text-white transition-colors hover:bg-[var(--color-blue)]"
           >
             Start practice test
-          </button>
+          </button> : <div className="mt-7 rounded-xl bg-slate-50 p-5" aria-live="polite">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">Question 1 of 20</p>
+            <h2 className="mt-3 text-lg font-semibold text-[var(--color-navy)]">What is the supreme law of the land?</h2>
+            <p className="mt-2 text-xs text-slate-500">Source: USCIS · verified September 16, 2026 · <a className="inline-flex items-center gap-1 text-blue-700 underline" href="https://www.uscis.gov/citizenship/find-study-materials-and-resources" target="_blank" rel="noreferrer">official study materials <ExternalLink size={12} /></a></p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">{options.map((option) => <button key={option} type="button" onClick={() => setAnswer(option)} className={`min-h-11 rounded-lg border px-4 py-3 text-left text-sm transition ${answer === option ? option === options[0] ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : 'border-red-400 bg-red-50 text-red-800' : 'border-slate-200 bg-white text-slate-700 hover:border-blue-400'}`}>{option}</button>)}</div>
+            {answer && <p className={`mt-4 flex items-center gap-2 text-sm font-medium ${answer === options[0] ? 'text-emerald-700' : 'text-red-700'}`}><CheckCircle2 size={16} /> {answer === options[0] ? 'Correct. Keep going.' : 'Not quite — review this answer before continuing.'}</p>}
+            <button type="button" disabled={!answer} className="mt-5 min-h-11 rounded-full bg-[var(--color-navy)] px-5 text-sm font-medium text-white disabled:opacity-40">Next question</button>
+          </div>}
         </div>
 
         <p className="mt-10 text-sm font-semibold uppercase tracking-[0.12rem] text-slate-400">
