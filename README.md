@@ -26,7 +26,7 @@ Features in first week :
 5. added sources to the questions
 
 ### AI USAGE :
-used ai in debugging (codex) to fix some bugs that saved me hours
+used ai in debugging (codex) to fix some bugs that saved us hours
 
 
 

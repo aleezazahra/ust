@@ -16,7 +16,7 @@ import {
 const navItems=[
     {label:"Dashboard", href:'/dashboard',icon:LayoutDashboard},
     {label:'Lessons',href:'/dashboard/lessons',icon:BookOpen},
-    {label:"Flashcards",href:"/dashboard/flashcards",icon:Layers},
+   
     {label:"Practice Test",href:"/dashboard/practice-test",icon:ClipboardCheck},
     {label:"My Progress",href:"/dashboard/progress",icon:TrendingUp},
     {label:"Settings",href:"/dashboard/settings",icon:Settings},
@@ -32,7 +32,7 @@ export default function Sidebar(){
         <div className="flex h-10 items-center border-b border-slate-200 px-6">
 
             <Link href="/dashboard" className="text-lg font-semibold text-[var(--color-navy)]">
-                name uh
+             hi
             </Link>
         </div>
 
