@@ -10,27 +10,30 @@ It is a U.S. citizenship test that is oral+ written exam administrated by U.S. C
 
 ## Polite Credits :) 
 all the information in this site will include all sources links/references so please keep this in mind :3 
-it is supposed to be a cute lil helper and more policies I will add in the privacy policy soon 
+it is supposed to be a cute lil helper and more policies I will add in the privacy policy soon
 
 -----------------------------------------------------
-Maybe will spend these two three weeks working on its frontend and will start backend once it is completed 
 
+(it is not functional yet will start working on backend in the week2 )
 
 ------------    Thanks for reading allat :) ----------
 
 Features in first week :
 1.Landing page (not copmpleted yet)
-2.Onboarding (not completed yet gonna add more customization in future)
+2.Onboarding (completed)
 3.Dashboard UI
 4. profile page UI
 5. added sources to the questions
+6. researched and gathered questions (no time tracked for it :pensive )
+
+(google auth wont work yet coz no backend so try login as guest to check out dashboard)
 
 ### AI USAGE :
-used ai in debugging (codex) to fix some bugs that saved us hours
+used ai in debugging (codex) to fix some bugs
 
+### Tech stack used
 
-
-will start working on backend from weerk 2 hopefully :3  
+Frontend : Next.js, tailwindCSS, Typescript 
 
 
 
