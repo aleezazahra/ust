@@ -167,16 +167,9 @@ export default function PrivacyPage() {
           </Section>
         </div>
 
-        <p className="mt-14 text-sm text-slate-500">
-          Questions about this policy? Reach out through the{' '}
-          <Link
-            href="/"
-            className="font-medium text-[var(--color-blue)] underline underline-offset-4 hover:text-[var(--color-navy)]"
-          >
-            contact details on our home page
-          </Link>
+       
           .
-        </p>
+     
       </div>
     </main>
   );

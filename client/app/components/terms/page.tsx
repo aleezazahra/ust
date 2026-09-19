@@ -1,4 +1,6 @@
+import { Jersey_10_Charted, Yusei_Magic } from 'next/font/google';
 import Link from 'next/link';
+import { GiHandOfGod } from 'react-icons/gi';
 
 type ListItem = {
   label?: string;
@@ -157,24 +159,10 @@ export default function TermsPage() {
           </Section>
         </div>
 
-        <p className="mt-14 text-sm text-slate-500">
-          Questions about these terms? Reach out through the{' '}
-          <Link
-            href="/"
-            className="font-medium text-[var(--color-blue)] underline underline-offset-4 hover:text-[var(--color-navy)]"
-          >
-            contact details on our home page
-          </Link>
-          . See also our{' '}
-          <Link
-            href="/privacy"
-            className="font-medium text-[var(--color-blue)] underline underline-offset-4 hover:text-[var(--color-navy)]"
-          >
-            Privacy Policy
-          </Link>
-          .
-        </p>
+       
       </div>
     </main>
   );
 }
+
+

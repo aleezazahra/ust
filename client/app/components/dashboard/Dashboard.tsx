@@ -48,7 +48,7 @@ export default function Dashboard() {
         </div>
 
         <div className="mt-8 flex flex-col justify-between gap-4 rounded-2xl bg-[var(--color-navy)] p-6 text-white sm:flex-row sm:items-center sm:p-7">
-          <div><p className="text-sm font-semibold text-blue-200">Your next best step</p><h2 className="mt-1 text-xl font-semibold">Review your weak questions</h2><p className="mt-1 text-sm text-slate-300">A focused 10-minute session keeps your streak moving.</p></div>
+          <div><p className="text-sm font-semibold text-blue-200">Your next best step</p><h2 className="mt-1 text-xl font-semibold">note to the reviewer : Did not set up backend yet so these features are not working </h2><p className="mt-1 text-sm text-slate-300">A focused 10-minute session keeps your streak moving.</p></div>
           <Link href="/dashboard/practice-test" className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-[var(--color-navy)] transition hover:bg-blue-50">Start review</Link>
         </div>
 
