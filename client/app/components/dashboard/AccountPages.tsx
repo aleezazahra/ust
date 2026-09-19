@@ -9,7 +9,7 @@ const copy: Record<Mode, { title: string; description: string }> = {
   settings: { title: 'Settings', description: 'Control your preferences and account access.' },
   progress: { title: 'My progress', description: 'See what is sticking and what deserves your next review.' },
   help: { title: 'Help center', description: 'Clear answers for a high-stakes study journey.' },
-};kk
+};
 
 export default function AccountPage({ mode }: { mode: Mode }) {
   const [saved, setSaved] = useState(false);
